@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CN34ZF_HFT_2021221.Data\CN34ZF_HFT_2021221.Data.csproj" />
+    <ProjectReference Include="..\CN34ZF_HFT_2021221.Logic\CN34ZF_HFT_2021221.Logic.csproj" />
+    <ProjectReference Include="..\CN34ZF_HFT_2021221.Models\CN34ZF_HFT_2021221.Models.csproj" />
+    <ProjectReference Include="..\CN34ZF_HFT_2021221.Repository\CN34ZF_HFT_2021221.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
