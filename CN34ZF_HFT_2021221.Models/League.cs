@@ -22,11 +22,11 @@ namespace CN34ZF_HFT_2021221.Data
 
         public int NumberofTeams { get; set; }
 
-        public bool FirstClass { get; set; }
+        public int LeagueRanking { get; set; }
 
 
         [NotMapped]
-        public string MainData => $"[{this.LeagueId}] {this.Country}, {this.LeagueName}, Country Id: {this.CountryId}, Number of teams: {this.NumberofTeams}, FirstClass: {this.FirstClass} ";
+        public string MainData => $"[{this.LeagueId}] {this.Country}, {this.LeagueName}, Country Id: {this.CountryId}, Number of teams: {this.NumberofTeams}, FirstClass: {this.LeagueRanking} ";
 
 #nullable enable
         [NotMapped]
@@ -45,7 +45,7 @@ namespace CN34ZF_HFT_2021221.Data
                 League other = obj as League;
                 return this.CountryId == other.CountryId &&
                     this.LeagueId == other.LeagueId &&
-                    this.FirstClass == other.FirstClass &&
+                    this.LeagueRanking == other.LeagueRanking &&
                     this.NumberofTeams == other.NumberofTeams &&
                     this.LeagueName == other.LeagueName &&
                     this.Country == other.Country;
@@ -56,7 +56,7 @@ namespace CN34ZF_HFT_2021221.Data
 
         public override int GetHashCode()
         {
-            return (int)this.LeagueId + this.FirstClass.GetHashCode();
+            return (int)this.LeagueId + this.LeagueRanking.GetHashCode();
         }
     }
 }

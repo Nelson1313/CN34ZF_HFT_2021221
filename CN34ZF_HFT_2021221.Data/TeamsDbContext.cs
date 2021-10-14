@@ -41,18 +41,15 @@ namespace CN34ZF_HFT_2021221.Data
             Country c1 = new Country() { CountryId = 1, CountryName = "Spain", Population = 47000000, Language = "Spanish", Area = 357000 };
             Country c2 = new Country() { CountryId = 2, CountryName = "Italy", Population = 60000000, Language = "Italian", Area = 300000 };
             Country c3 = new Country() { CountryId = 3, CountryName = "England", Population = 54000000, Language = "English", Area = 130000 };
-            Country c4 = new Country() { CountryId = 4, CountryName = "Germany", Population = 84000000, Language = "German", Area = 506000 };
 
             // Leagues
-            League l1 = new League() { LeagueId = 1, LeagueName = "La Liga", CountryId = c1.CountryId, NumberofTeams = 20, FirstClass = true };
-            League l2 = new League() { LeagueId = 2, LeagueName = "Serie A", CountryId = c2.CountryId, NumberofTeams = 20, FirstClass = true };
-            League l3 = new League() { LeagueId = 3, LeagueName = "Premier League", CountryId = c3.CountryId, NumberofTeams = 20, FirstClass = true };
-            League l4 = new League() { LeagueId = 4, LeagueName = "Bundesliga 2.", CountryId = c4.CountryId, NumberofTeams = 18, FirstClass = false };
+            League l1 = new League() { LeagueId = 1, LeagueName = "La Liga", CountryId = c1.CountryId, NumberofTeams = 20, LeagueRanking = 2 };
+            League l2 = new League() { LeagueId = 2, LeagueName = "Serie A", CountryId = c2.CountryId, NumberofTeams = 20, LeagueRanking = 4 };
+            League l3 = new League() { LeagueId = 3, LeagueName = "Premier League", CountryId = c3.CountryId, NumberofTeams = 20, LeagueRanking = 1 };
 
             c1.CountryId = l1.CountryId;
             c2.CountryId = l2.CountryId;
             c3.CountryId = l3.CountryId;
-            c4.CountryId = l4.CountryId;
 
             // Teams
             // La Liga (CountryId: 1)
@@ -138,9 +135,10 @@ namespace CN34ZF_HFT_2021221.Data
                 .OnDelete(DeleteBehavior.SetNull);
             });
 
-            //modelBuilder.Entity<Factory>().HasData(f1, f2, f3, f4);
-            //modelBuilder.Entity<Brand>().HasData(b1, b2, b3, b4);
-            //modelBuilder.Entity<Model>().HasData(m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14, m15, m16, m17, m18, m19, m20, m21, m22, m23, m24, m25, m26, m27, m28, m29, m30, m31);
+            modelBuilder.Entity<League>().HasData(l1, l2, l3);
+            modelBuilder.Entity<Country>().HasData(c1, c2, c3);
+            modelBuilder.Entity<Team>().HasData(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16, t17, t18, t19, t20, t21, t22, t23, t24, t25, t26, t27, t28, t29, t30,
+                t31, t32, t33, t34, t35, t36, t37, t38, t39, t40, t41, t42, t43, t44, t45, t46, t47, t48, t49, t50, t51, t52, t53, t54, t55, t56, t57, t58, t59, t60);
         }
     }
 }
