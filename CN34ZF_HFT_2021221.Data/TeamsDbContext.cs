@@ -54,7 +54,7 @@ namespace CN34ZF_HFT_2021221.Data
             c3.CountryId = l3.CountryId;
             c4.CountryId = l4.CountryId;
 
-            // Models
+            // Teams
             // La Liga (CountryId: 1)
             Team t1 = new Team() { TeamId = 1, CountryId = l1.CountryId, TeamName = "Alavés", YearofFoundation = 1921, Seat = "Mendizorroza", Manager = "Javier Calleja" };
             Team t2 = new Team() { TeamId = 2, CountryId = l1.CountryId, TeamName = "Athletic Bilbao", YearofFoundation = 1898, Seat = "San Mamés", Manager = "Marcelino" };
@@ -77,6 +77,51 @@ namespace CN34ZF_HFT_2021221.Data
             Team t19 = new Team() { TeamId = 19, CountryId = l1.CountryId, TeamName = "Valencia", YearofFoundation = 1919, Seat = "Mestalla", Manager = "José Bordalás" };
             Team t20 = new Team() { TeamId = 20, CountryId = l1.CountryId, TeamName = "Villarreal", YearofFoundation = 1923, Seat = "Estadio de la Cerámica", Manager = "Unai Emery" };
 
+            // Serie A (CountryId: 2)
+            Team t21 = new Team() { TeamId = 21, CountryId = l2.CountryId, TeamName = "Atalanta", YearofFoundation = 1907, Seat = "Gewiss Stadium", Manager = "Gian Piero Gasperini" };
+            Team t22 = new Team() { TeamId = 22, CountryId = l2.CountryId, TeamName = "Bologna", YearofFoundation = 1909, Seat = "Stadio Renato Dall'Ara", Manager = "Siniša Mihajlović" };
+            Team t23 = new Team() { TeamId = 23, CountryId = l2.CountryId, TeamName = "Cagliari", YearofFoundation = 1920, Seat = "Sardegna Arena", Manager = "Walter Mazzarri" };
+            Team t24 = new Team() { TeamId = 24, CountryId = l2.CountryId, TeamName = "Empoli", YearofFoundation = 1920, Seat = "Stadio Carlo Castellani", Manager = "Aurelio Andreazzoli" };
+            Team t25 = new Team() { TeamId = 25, CountryId = l2.CountryId, TeamName = "Fiorentina", YearofFoundation = 1926, Seat = "Stadio Artemio Franchi", Manager = "Vincenzo Italiano" };
+            Team t26 = new Team() { TeamId = 26, CountryId = l2.CountryId, TeamName = "Genoa", YearofFoundation = 1893, Seat = "Stadio Luigi Ferraris", Manager = "Davide Ballardini" };
+            Team t27 = new Team() { TeamId = 27, CountryId = l2.CountryId, TeamName = "Hellas Verona", YearofFoundation = 1903, Seat = "Stadio Marcantonio Bentegodi", Manager = "Igor Tudor" };
+            Team t28 = new Team() { TeamId = 28, CountryId = l2.CountryId, TeamName = "Internazionale", YearofFoundation = 1908, Seat = "San Siro", Manager = "Simone Inzaghi" };
+            Team t29 = new Team() { TeamId = 29, CountryId = l2.CountryId, TeamName = "Juventus", YearofFoundation = 1897, Seat = "Allianz Stadium", Manager = "Massimiliano Allegri" };
+            Team t30 = new Team() { TeamId = 30, CountryId = l2.CountryId, TeamName = "Lazio", YearofFoundation = 1900, Seat = "Stadio Olimpico", Manager = "Maurizio Sarri" };
+            Team t31 = new Team() { TeamId = 31, CountryId = l2.CountryId, TeamName = "Milan", YearofFoundation = 1899, Seat = "San Siro", Manager = "Stefano Pioli" };
+            Team t32 = new Team() { TeamId = 32, CountryId = l2.CountryId, TeamName = "Napoli", YearofFoundation = 1926, Seat = "Stadio Diego Armando Maradona", Manager = "Luciano Spalletti" };
+            Team t33 = new Team() { TeamId = 33, CountryId = l2.CountryId, TeamName = "Roma", YearofFoundation = 1927, Seat = "Stadio Olimpico", Manager = "José Mourinho" };
+            Team t34 = new Team() { TeamId = 34, CountryId = l2.CountryId, TeamName = "Salernitana", YearofFoundation = 1919, Seat = "Stadio Arechi", Manager = "Fabrizio Castori" };
+            Team t35 = new Team() { TeamId = 35, CountryId = l2.CountryId, TeamName = "Sampdoria", YearofFoundation = 1946, Seat = "Stadio Luigi Ferraris", Manager = "Roberto D'Aversa" };
+            Team t36 = new Team() { TeamId = 36, CountryId = l2.CountryId, TeamName = "Sassuolo", YearofFoundation = 1920, Seat = "Mapei Stadium", Manager = "Alessio Dionisi" };
+            Team t37 = new Team() { TeamId = 37, CountryId = l2.CountryId, TeamName = "Spezia", YearofFoundation = 1906, Seat = "Stadio Alberto Picco", Manager = "Thiago Motta" };
+            Team t38 = new Team() { TeamId = 38, CountryId = l2.CountryId, TeamName = "Torino", YearofFoundation = 1906, Seat = "Stadio Olimpico Grande Torino", Manager = "Ivan Jurić" };
+            Team t39 = new Team() { TeamId = 39, CountryId = l2.CountryId, TeamName = "Udinese", YearofFoundation = 1896, Seat = "Stadio Friuli", Manager = "Luca Gotti" };
+            Team t40 = new Team() { TeamId = 40, CountryId = l2.CountryId, TeamName = "Venezia", YearofFoundation = 1907, Seat = "Stadio Pier Luigi Penzo", Manager = "Paolo Zanetti" };
+
+            // Premier League (CountryId: 3)
+            Team t41 = new Team() { TeamId = 41, CountryId = l3.CountryId, TeamName = "Arsenal", YearofFoundation = 1886, Seat = "Emirates Stadium", Manager = "Mikel Arteta" };
+            Team t42 = new Team() { TeamId = 42, CountryId = l3.CountryId, TeamName = "Aston Villa", YearofFoundation = 1874, Seat = "Villa Park", Manager = "Dean Smith" };
+            Team t43 = new Team() { TeamId = 43, CountryId = l3.CountryId, TeamName = "Brentford", YearofFoundation = 1889, Seat = "Brentford Community Stadium", Manager = "Thomas Frank" };
+            Team t44 = new Team() { TeamId = 44, CountryId = l3.CountryId, TeamName = "Brighton & Hove Albion", YearofFoundation = 1901, Seat = "Falmer Stadium", Manager = "Graham Potter" };
+            Team t45 = new Team() { TeamId = 45, CountryId = l3.CountryId, TeamName = "Burnley", YearofFoundation = 1882, Seat = "Turf Moor", Manager = "Sean Dyche" };
+            Team t46 = new Team() { TeamId = 46, CountryId = l3.CountryId, TeamName = "Chelsea", YearofFoundation = 1905, Seat = "Stamford Bridge", Manager = "Thomas Tuchel" };
+            Team t47 = new Team() { TeamId = 47, CountryId = l3.CountryId, TeamName = "Crystal Palace", YearofFoundation = 1905, Seat = "Selhurst Park", Manager = "Patrick Vieira" };
+            Team t48 = new Team() { TeamId = 48, CountryId = l3.CountryId, TeamName = "Everton", YearofFoundation = 1878, Seat = "Goodison Park", Manager = "Rafael Benítez" };
+            Team t49 = new Team() { TeamId = 49, CountryId = l3.CountryId, TeamName = "Leeds United", YearofFoundation = 1917, Seat = "Elland Road", Manager = "Marcelo Bielsa" };
+            Team t50 = new Team() { TeamId = 50, CountryId = l3.CountryId, TeamName = "Leicester City", YearofFoundation = 1884, Seat = "King Power Stadium", Manager = "Brendan Rodgers" };
+            Team t51 = new Team() { TeamId = 51, CountryId = l3.CountryId, TeamName = "Liverpool", YearofFoundation = 1892, Seat = "Anfield", Manager = "Jürgen Klopp" };
+            Team t52 = new Team() { TeamId = 52, CountryId = l3.CountryId, TeamName = "Manchester City", YearofFoundation = 1880, Seat = "Etihad Stadium", Manager = "Pep Guardiola" };
+            Team t53 = new Team() { TeamId = 53, CountryId = l3.CountryId, TeamName = "Manchester United", YearofFoundation = 1902, Seat = "Old Trafford", Manager = "Ole Gunnar Solskjær" };
+            Team t54 = new Team() { TeamId = 54, CountryId = l3.CountryId, TeamName = "Newcastle United", YearofFoundation = 1892, Seat = "St James' Park", Manager = "Steve Bruce" };
+            Team t55 = new Team() { TeamId = 55, CountryId = l3.CountryId, TeamName = "Norwich City", YearofFoundation = 1902, Seat = "Carrow Road", Manager = "Daniel Farke" };
+            Team t56 = new Team() { TeamId = 56, CountryId = l3.CountryId, TeamName = "Southampton", YearofFoundation = 1885, Seat = "St Mary's Stadium", Manager = "Ralph Hasenhüttl" };
+            Team t57 = new Team() { TeamId = 57, CountryId = l3.CountryId, TeamName = "Tottenham Hotspur", YearofFoundation = 1882, Seat = "Tottenham Hotspur Stadium", Manager = "Nuno Espírito Santo" };
+            Team t58 = new Team() { TeamId = 58, CountryId = l3.CountryId, TeamName = "Watford", YearofFoundation = 1881, Seat = "Vicarage Road", Manager = "Claudio Ranieri" };
+            Team t59 = new Team() { TeamId = 59, CountryId = l3.CountryId, TeamName = "West Ham United", YearofFoundation = 1900, Seat = "London Stadium", Manager = "David Moyes" };
+            Team t60 = new Team() { TeamId = 60, CountryId = l3.CountryId, TeamName = "Wolverhampton Wanderers", YearofFoundation = 1877, Seat = "Molineux Stadium", Manager = "Bruno Lage" };
+
+
             modelBuilder.Entity<Team>(entity =>
             {
                 entity.HasOne(team => team.Country)
@@ -92,6 +137,10 @@ namespace CN34ZF_HFT_2021221.Data
                 .HasForeignKey(league => league.CountryId)
                 .OnDelete(DeleteBehavior.SetNull);
             });
+
+            //modelBuilder.Entity<Factory>().HasData(f1, f2, f3, f4);
+            //modelBuilder.Entity<Brand>().HasData(b1, b2, b3, b4);
+            //modelBuilder.Entity<Model>().HasData(m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14, m15, m16, m17, m18, m19, m20, m21, m22, m23, m24, m25, m26, m27, m28, m29, m30, m31);
         }
     }
 }
