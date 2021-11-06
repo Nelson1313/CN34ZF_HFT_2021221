@@ -6,17 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CN34ZF_HFT_2021221.Data
+namespace CN34ZF_HFT_2021221.Models
 {
     [Table("Teams")]
     public class Team
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int? TeamId { get; set; }
-
-        [ForeignKey(nameof(Country))]
-        public int? CountryId { get; set; }
+        public int TeamId { get; set; }
 
         public string TeamName { get; set; }
 
@@ -32,6 +29,7 @@ namespace CN34ZF_HFT_2021221.Data
         [NotMapped]
         public virtual Country? Country { get; set; }
 #nullable disable
+        public int? CountryId { get; set; }
 
         public override string ToString()
         {

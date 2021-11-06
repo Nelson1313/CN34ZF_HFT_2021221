@@ -1,0 +1,19 @@
+﻿using CN34ZF_HFT_2021221.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CN34ZF_HFT_2021221.Repository
+{
+    public interface ICountryRepository
+    {
+        // C(R)RUD
+        void Create(Country country);
+        Country ReadOne(int countryId);
+        IQueryable<Country> ReadAll(); // query
+        void Update(Country country);
+        void Delete(int countryId);
+    }
+}

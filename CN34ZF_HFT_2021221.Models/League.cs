@@ -6,14 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CN34ZF_HFT_2021221.Data
+namespace CN34ZF_HFT_2021221.Models
 {
     [Table("Leagues")]
     public class League
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int? LeagueId { get; set; }
+        public int LeagueId { get; set; }
 
         [ForeignKey(nameof(Country))]
         public int? CountryId { get; set; }
