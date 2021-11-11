@@ -14,9 +14,7 @@ namespace CN34ZF_HFT_2021221.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int LeagueId { get; set; }
-
-        [ForeignKey(nameof(Country))]
-        public int? CountryId { get; set; }
+        
 
         public string LeagueName { get; set; }
 
@@ -32,6 +30,7 @@ namespace CN34ZF_HFT_2021221.Models
         [NotMapped]
         public virtual Country? Country { get; set; }
 #nullable disable
+        public int CountryId { get; set; }
 
         public override string ToString()
         {

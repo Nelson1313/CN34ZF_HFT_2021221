@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CN34ZF_HFT_2021221.Endpoint
 {
-    public class Program
+    public class Program 
     {
         public static void Main(string[] args)
         {

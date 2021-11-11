@@ -15,9 +15,6 @@ namespace CN34ZF_HFT_2021221.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CountryId { get; set; }
 
-        [ForeignKey(nameof(League))]
-        public int? LeagueId { get; set; }
-
         public string CountryName { get; set; }
 
         public int Population { get; set; }
