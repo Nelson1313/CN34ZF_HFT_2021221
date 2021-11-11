@@ -11,7 +11,6 @@ namespace CN34ZF_HFT_2021221.Logic
         double AverageFoundation();
 
         IEnumerable<KeyValuePair<string, double>>
-            AverageFoundationByTeams();
-        object ReadAll();
+            AverageFoundationByTeam();
     }
 }
