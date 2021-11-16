@@ -1,4 +1,5 @@
-﻿using CN34ZF_HFT_2021221.Repository;
+﻿using CN34ZF_HFT_2021221.Models;
+using CN34ZF_HFT_2021221.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,26 @@ namespace CN34ZF_HFT_2021221.Logic
                 .Select(x => new KeyValuePair<string, double>(
                     x.Key,
                     x.Average(x => x.YearofFoundation)));
+        }
+
+        public void Create(Team team)
+        {
+            repo.Create(team);
+        }
+
+        public void Delete(int teamId)
+        {
+            repo.Delete(teamId);
+        }
+
+        public IQueryable<Team> ReadAll()
+        {
+            return repo.ReadAll();
+        }
+
+        public void Update(Team team)
+        {
+            repo.Update(team);
         }
     }
 }
