@@ -5,6 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
+    <PackageReference Include="Moq" Version="4.16.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CN34ZF_HFT_2021221.Data\CN34ZF_HFT_2021221.Data.csproj" />
     <ProjectReference Include="..\CN34ZF_HFT_2021221.Logic\CN34ZF_HFT_2021221.Logic.csproj" />
     <ProjectReference Include="..\CN34ZF_HFT_2021221.Models\CN34ZF_HFT_2021221.Models.csproj" />
