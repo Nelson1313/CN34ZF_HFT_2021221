@@ -40,6 +40,11 @@ namespace CN34ZF_HFT_2021221.Logic
             repo.Create(team);
         }
 
+        public Team ReadOne(int teamId)
+        {
+            return repo.ReadOne(teamId);
+        }
+
         public void Delete(int teamId)
         {
             repo.Delete(teamId);
