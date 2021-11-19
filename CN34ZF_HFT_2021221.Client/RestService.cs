@@ -32,6 +32,7 @@ namespace CN34ZF_HFT_2021221.Client
             {
                 throw new ArgumentException("Endpoint is not available!");
             }
+
         }
 
         public List<T> Get<T>(string endpoint)
