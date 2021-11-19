@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -10,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CN34ZF_HFT_2021221.Data\CN34ZF_HFT_2021221.Data.csproj" />
     <ProjectReference Include="..\CN34ZF_HFT_2021221.Models\CN34ZF_HFT_2021221.Models.csproj" />
   </ItemGroup>
 
