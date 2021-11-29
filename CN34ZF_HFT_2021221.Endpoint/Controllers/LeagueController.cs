@@ -13,18 +13,11 @@ namespace CN34ZF_HFT_2021221.Logic
     [ApiController]
     public class LeagueController : ControllerBase
     {
-        private ILeagueLogic logic;
+        ILeagueLogic logic;
 
         public LeagueController(ILeagueLogic logic)
         {
             this.logic = logic;
-        }
-
-        [HttpGet("test")]
-        public string Test()
-        {
-
-            return "TESTEST";
         }
 
         [HttpGet]
@@ -34,22 +27,29 @@ namespace CN34ZF_HFT_2021221.Logic
             return logic.ReadAll();
         }
 
+        [HttpGet("{id}")]
+        public League Get(int id)
+        {
+
+            return logic.Read(id);
+        }
+
         [HttpPost]
-        public void CreateOne([FromBody] League league)
+        public void Post([FromBody] League league)
         {
 
             logic.Create(league);
         }
 
         [HttpPut]
-        public void UpdateOne([FromBody] League league)
+        public void Put([FromBody] League league)
         {
 
             logic.Update(league);
         }
 
-        [HttpDelete("{leagueId}")]
-        public void DeleteOne([FromRoute] int leagueId)
+        [HttpDelete("{id}")]
+        public void Delete(int leagueId)
         {
 
             logic.Delete(leagueId);

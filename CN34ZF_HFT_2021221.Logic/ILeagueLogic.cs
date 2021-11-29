@@ -14,6 +14,7 @@ namespace CN34ZF_HFT_2021221.Logic
         IEnumerable<KeyValuePair<string, double>>
             AverageNumberofTeamsByLeague();
 
+        League Read(int id);
         void Create(League league);
         IQueryable<League> ReadAll();
         void Update(League league);
