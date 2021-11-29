@@ -14,6 +14,7 @@ namespace CN34ZF_HFT_2021221.Logic
         IEnumerable<KeyValuePair<string, double>>
             AveragePopulationByCountry();
 
+        Country Read(int id);
         void Create(Country country);
         IQueryable<Country> ReadAll();
         void Update(Country country);

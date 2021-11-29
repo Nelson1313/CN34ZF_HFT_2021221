@@ -13,43 +13,44 @@ namespace CN34ZF_HFT_2021221.Logic
     [ApiController]
     public class CountryController : ControllerBase
     {
-        private ICountryLogic logic;
+        ICountryLogic logic;
 
-        public CountryController(ICountryLogic logic)
+        public CountryController(ICountryLogic countryLogic)
         {
-            this.logic = logic;
-        }
-
-        [HttpGet("test")]
-        public string Test()
-        {
-
-            return "TESTEST";
+            logic = countryLogic;
         }
 
         [HttpGet]
-        public IEnumerable<Country> GetAll()
+        public IEnumerable<Country> Get()
         {
 
             return logic.ReadAll();
         }
 
+        [HttpGet("{id}")]
+        public Country Get(int id)
+        {
+
+            return logic.Read(id);
+        }
+
+
         [HttpPost]
-        public void CreateOne([FromBody] Country country)
+        public void Post([FromBody] Country country)
         {
 
             logic.Create(country);
         }
 
         [HttpPut]
-        public void UpdateOne([FromBody] Country country)
+        public void Put([FromBody] Country country)
         {
 
             logic.Update(country);
         }
 
-        [HttpDelete("{countryId}")]
-        public void DeleteOne([FromRoute] int countryId)
+        [HttpDelete("{Id}")]
+        public void Delete(int countryId)
         {
 
             logic.Delete(countryId);
