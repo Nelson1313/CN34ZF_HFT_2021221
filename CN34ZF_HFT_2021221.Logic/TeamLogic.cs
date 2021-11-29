@@ -59,5 +59,10 @@ namespace CN34ZF_HFT_2021221.Logic
         {
             repo.Update(team);
         }
+
+        public Team Read(int id)
+        {
+            return repo.ReadOne(id);
+        }
     }
 }

@@ -34,6 +34,11 @@ namespace CN34ZF_HFT_2021221.Logic
                     x.Average(x => x.Population)));
         }
 
+        public Country Read(int id)
+        {
+            return repo.ReadOne(id);
+        }
+
         public void Create(Country country)
         {
             repo.Create(country);

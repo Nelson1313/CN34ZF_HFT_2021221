@@ -34,6 +34,10 @@ namespace CN34ZF_HFT_2021221.Logic
                     x.Average(x => x.NumberofTeams)));
         }
 
+        public League Read(int id)
+        {
+            return repo.ReadOne(id);
+        }
         public void Create(League league)
         {
             repo.Create(league);
