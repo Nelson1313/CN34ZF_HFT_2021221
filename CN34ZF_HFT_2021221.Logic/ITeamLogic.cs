@@ -14,6 +14,7 @@ namespace CN34ZF_HFT_2021221.Logic
         IEnumerable<KeyValuePair<string, double>>
             AverageFoundationByTeam();
 
+        Team Read(int id);
         void Create(Team team);
         IQueryable<Team> ReadAll();
         void Update(Team team);

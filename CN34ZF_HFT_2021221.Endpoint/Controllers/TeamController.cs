@@ -13,18 +13,11 @@ namespace HFT_FF_L09.Endpoint.Controllers
     [ApiController]
     public class TeamController : ControllerBase
     {
-        private ITeamLogic logic;
+        ITeamLogic logic;
 
         public TeamController(ITeamLogic logic)
         {
             this.logic = logic;
-        }
-
-        [HttpGet("test")]
-        public string Test()
-        {
-
-            return "TESTEST";
         }
 
         [HttpGet]
@@ -34,22 +27,29 @@ namespace HFT_FF_L09.Endpoint.Controllers
             return logic.ReadAll();
         }
 
+        [HttpGet("{id}")]
+        public Team Get(int id)
+        {
+
+            return logic.Read(id);
+        }
+
         [HttpPost]
-        public void CreateOne([FromBody] Team team)
+        public void Post([FromBody] Team team)
         {
 
             logic.Create(team);
         }
 
         [HttpPut]
-        public void UpdateOne([FromBody] Team team)
+        public void Put([FromBody] Team team)
         {
 
             logic.Update(team);
         }
 
-        [HttpDelete("{teamId}")]
-        public void DeleteOne([FromRoute] int teamId)
+        [HttpDelete("{id}")]
+        public void Delete(int teamId)
         {
 
             logic.Delete(teamId);
