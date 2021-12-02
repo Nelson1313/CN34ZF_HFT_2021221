@@ -24,15 +24,27 @@ namespace CN34ZF_HFT_2021221.Logic
         }
 
         public IEnumerable<KeyValuePair<string, double>>
-            AverageNumberofTeamsByLeague()
+            AverageNumberofTeamsByCountry()
         {
             return repo
                 .ReadAll()
-                .GroupBy(x => x.LeagueName)
+                .GroupBy(x => x.Country.CountryName)
                 .Select(x => new KeyValuePair<string, double>(
                     x.Key,
                     x.Average(x => x.NumberofTeams)));
         }
+
+        public IEnumerable<KeyValuePair<string, double>>
+            HighestNumberofTeamsByCountry()
+        {
+            return repo
+                .ReadAll()
+                .GroupBy(x => x.Country.CountryName)
+                .Select(x => new KeyValuePair<string, double>(
+                    x.Key,
+                    x.Max(x => x.NumberofTeams)));
+        }
+
         public void Create(League league)
         {
             repo.Create(league);

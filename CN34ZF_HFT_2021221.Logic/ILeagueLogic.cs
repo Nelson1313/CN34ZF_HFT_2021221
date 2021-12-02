@@ -12,7 +12,10 @@ namespace CN34ZF_HFT_2021221.Logic
         double AverageNumberofTeams();
 
         IEnumerable<KeyValuePair<string, double>>
-            AverageNumberofTeamsByLeague();
+            AverageNumberofTeamsByCountry();
+
+        IEnumerable<KeyValuePair<string, double>>
+            HighestNumberofTeamsByCountry();
 
         League Read(int id);
         void Create(League league);

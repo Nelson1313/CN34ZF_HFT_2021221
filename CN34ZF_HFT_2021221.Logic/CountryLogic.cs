@@ -16,7 +16,7 @@ namespace CN34ZF_HFT_2021221.Logic
         {
             this.repo = repo;
         }
-        public double AveragePopulation()
+        public double LowestPopulation()
         {
             return repo
                 .ReadAll()
@@ -24,14 +24,14 @@ namespace CN34ZF_HFT_2021221.Logic
         }
 
         public IEnumerable<KeyValuePair<string, double>>
-            AveragePopulationByCountry()
+            LowestPopulationByCountry()
         {
             return repo
                 .ReadAll()
                 .GroupBy(x => x.CountryName)
                 .Select(x => new KeyValuePair<string, double>(
                     x.Key,
-                    x.Average(x => x.Population)));
+                    x.Min(x => x.Population)));
         }
 
         public Country Read(int countryId)

@@ -24,12 +24,19 @@ namespace CN34ZF_HFT_2021221.Logic
                 .Average(x => x.YearofFoundation);
         }
 
-        public IEnumerable<KeyValuePair<string, double>>
-            AverageFoundationByTeam()
+        public double LowestFoundation()
         {
             return repo
                 .ReadAll()
-                .GroupBy(x => x.TeamName)
+                .Min(x => x.YearofFoundation);
+        }
+
+        public IEnumerable<KeyValuePair<string, double>>
+            AverageFoundationByLeague()
+        {
+            return repo
+                .ReadAll()
+                .GroupBy(x => x.League.LeagueName)
                 .Select(x => new KeyValuePair<string, double>(
                     x.Key,
                     x.Average(x => x.YearofFoundation)));

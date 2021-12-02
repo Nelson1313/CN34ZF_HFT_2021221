@@ -9,10 +9,10 @@ namespace CN34ZF_HFT_2021221.Logic
 {
     public interface ICountryLogic
     {
-        double AveragePopulation();
+        double LowestPopulation();
 
         IEnumerable<KeyValuePair<string, double>>
-            AveragePopulationByCountry();
+            LowestPopulationByCountry();
 
         Country Read(int id);
         void Create(Country country);

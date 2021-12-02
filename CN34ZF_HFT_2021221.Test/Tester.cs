@@ -3,16 +3,13 @@ using CN34ZF_HFT_2021221.Models;
 using CN34ZF_HFT_2021221.Repository;
 using Moq;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CN34ZF_HFT_2021221.Test
 {
     [TestFixture]
-    public class TeamLogicTestsMock
+    public class Tester
     {
 
         TeamLogic tl;
@@ -25,79 +22,87 @@ namespace CN34ZF_HFT_2021221.Test
             new Mock<ILeagueRepository>();
         Mock<ITeamRepository> mockTeamRepository =
             new Mock<ITeamRepository>();
-        public TeamLogicTestsMock()
-        {
 
-            mockCountryRepository.Setup((c) => c.Create(It.IsAny<Country>()));
-            mockCountryRepository.Setup((c) => c.ReadAll()).Returns(
-                new List<Country>()
-                {
+        [SetUp]
+        public void Init()
+        {
+            Country europe = new Country();
+            europe.CountryId = 10;
+            europe.CountryName = "Europe";
+            var countries = new List<Country>()
+                    {
                     new Country()
                     {
-                        CountryId = 1,
+                        CountryId = 10,
                         CountryName = "Hungary",
                         Population = 9750000,
                         Language = "Hungarian"
                     },
                     new Country()
                     {
-                        CountryId = 2,
+                        CountryId = 10,
                         CountryName = "Germany",
                         Population = 83240000,
                         Language = "German"
                     }
-                }.AsQueryable());
+                }.AsQueryable();
+
+            mockCountryRepository.Setup((c) => c.ReadAll()).Returns(countries);
 
             cl = new CountryLogic(mockCountryRepository.Object);
 
-
-            mockLeagueRepository.Setup((l) => l.Create(It.IsAny<League>()));
-            mockLeagueRepository.Setup((l) => l.ReadAll()).Returns(
-                new List<League>()
+            Country fakeCountry = new Country();
+            fakeCountry.CountryId = 4;
+            fakeCountry.CountryName = "Hungary";
+            var leagues = new List<League>()
                 {
                     new League()
                     {
                         LeagueId = 5,
-                        LeagueName = "Bundesliga",
-                        LeagueRanking = 3,
-                        CountryId = 5
+                        LeagueName = "NB1",
+                        NumberofTeams = 30,
+                        Country = fakeCountry
                     },
                     new League()
                     {
-                        LeagueId = 4,
-                        LeagueName = "NB1",
-                        LeagueRanking = 28,
-                        CountryId = 4
+                        LeagueId = 6,
+                        LeagueName = "NB2",
+                        NumberofTeams = 15,
+                        Country = fakeCountry
                     }
-                }.AsQueryable());
+                }.AsQueryable();
+
+            mockLeagueRepository.Setup((l) => l.ReadAll()).Returns(leagues);
 
             ll = new LeagueLogic(mockLeagueRepository.Object);
 
-            mockTeamRepository.Setup((t) => t.Create(It.IsAny<Team>()));
-            mockTeamRepository.Setup((t) => t.ReadAll()).Returns(
-                new List<Team>()
-                {
+            League fakeLeague = new League();
+            fakeLeague.LeagueId = 4;
+            fakeLeague.LeagueName = "Bundesliga";
+            var teams = new List<Team>()
+            {
                     new Team()
                     {
                         TeamId = 61,
                         TeamName = "Borussia Dortmund",
                         YearofFoundation = 1944,
-                        LeagueId = 5
+                        League = fakeLeague
                     },
                     new Team()
                     {
                         TeamId = 62,
                         TeamName = "Debreceni VSC",
                         YearofFoundation = 1899,
-                        LeagueId = 4
+                        League = fakeLeague
                     }
-                }.AsQueryable());
+             }.AsQueryable();
+
+            mockTeamRepository.Setup((t) => t.ReadAll()).Returns(teams);
 
             tl = new TeamLogic(mockTeamRepository.Object);
         }
-
         [Test]
-        public void AverageFoundation()
+        public void AverageFoundationTest()
         {
             //ACT
             var result = tl.AverageFoundation();
@@ -107,15 +112,55 @@ namespace CN34ZF_HFT_2021221.Test
         }
 
         [Test]
-        public void AverageFoundationByTeam()
+        public void LowestFoundationTest()
         {
             //ACT
-            var result = tl.AverageFoundationByTeam().ToArray();
+            var result = tl.LowestFoundation();
 
             //ASSERT
-            Assert.That(result[0],
-                Is.EqualTo(new KeyValuePair<string, double>
-                ("Borussia Dortmund", 1944)));
+            Assert.That(result, Is.EqualTo(1899));
+        }
+
+        [Test]
+        public void AverageFoundationByTeamTest()
+        {
+            //ACT
+            var result = tl.AverageFoundationByLeague();
+
+            //ASSERT
+            var excepted = new List<KeyValuePair<string, double>>()
+            {
+                new KeyValuePair<string, double>("Bundesliga", 1921.5)
+            };
+            Assert.That(result, Is.EqualTo(excepted));
+        }
+
+        [Test]
+        public void HighestNumberofTeamsByCountryTest()
+        {
+            //ACT
+            var result = ll.HighestNumberofTeamsByCountry();
+
+            //ASSERT
+            var excepted = new List<KeyValuePair<string, double>>()
+            {
+                new KeyValuePair<string, double>("Hungary", 30)
+            };
+            Assert.That(result, Is.EqualTo(excepted));
+        }
+
+        [Test]
+        public void AverageNumberofTeamsByCountryTest()
+        {
+            //ACT
+            var result = ll.AverageNumberofTeamsByCountry();
+
+            //ASSERT
+            var excepted = new List<KeyValuePair<string, double>>()
+            {
+                new KeyValuePair<string, double>("Hungary", 22.5)
+            };
+            Assert.That(result, Is.EqualTo(excepted));
         }
 
         [TestCase(3000, true)]
@@ -170,15 +215,6 @@ namespace CN34ZF_HFT_2021221.Test
             mockTeamRepository.Verify(c => c.Create(newTeam), Times.Once);
 
         }
-
-        //[Test]
-        //public void TeamRead()
-        //{
-        //    Team team = tl.Read(61);
-
-        //    Assert.That(team.TeamId, Is.EqualTo(61));
-        //    Assert.That(team.YearofFoundation, Is.EqualTo(1944));
-        //}
 
         [Test]
         public void TeamDelete()
