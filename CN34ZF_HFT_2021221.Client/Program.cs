@@ -16,6 +16,7 @@ namespace CN34ZF_HFT_2021221.Client
 
             var teams = rest.Get<Team>("team");
             var countries = rest.Get<Country>("country");
+            ;
         }
     }
 }

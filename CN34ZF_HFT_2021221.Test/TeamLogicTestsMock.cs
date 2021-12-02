@@ -16,15 +16,62 @@ namespace CN34ZF_HFT_2021221.Test
     {
 
         TeamLogic tl;
+        CountryLogic cl;
+        LeagueLogic ll;
+
+        Mock<ICountryRepository> mockCountryRepository =
+            new Mock<ICountryRepository>();
+        Mock<ILeagueRepository> mockLeagueRepository =
+            new Mock<ILeagueRepository>();
+        Mock<ITeamRepository> mockTeamRepository =
+            new Mock<ITeamRepository>();
         public TeamLogicTestsMock()
         {
-            Mock<ITeamRepository> mockTeamRepository =
-                new Mock<ITeamRepository>();
 
-            League fakeLeague = new League()
-            {
-                LeagueName = "Bundesliga"
-            };
+            mockCountryRepository.Setup((c) => c.Create(It.IsAny<Country>()));
+            mockCountryRepository.Setup((c) => c.ReadAll()).Returns(
+                new List<Country>()
+                {
+                    new Country()
+                    {
+                        CountryId = 1,
+                        CountryName = "Hungary",
+                        Population = 9750000,
+                        Language = "Hungarian"
+                    },
+                    new Country()
+                    {
+                        CountryId = 2,
+                        CountryName = "Germany",
+                        Population = 83240000,
+                        Language = "German"
+                    }
+                }.AsQueryable());
+
+            cl = new CountryLogic(mockCountryRepository.Object);
+
+
+            mockLeagueRepository.Setup((l) => l.Create(It.IsAny<League>()));
+            mockLeagueRepository.Setup((l) => l.ReadAll()).Returns(
+                new List<League>()
+                {
+                    new League()
+                    {
+                        LeagueId = 5,
+                        LeagueName = "Bundesliga",
+                        LeagueRanking = 3,
+                        CountryId = 5
+                    },
+                    new League()
+                    {
+                        LeagueId = 4,
+                        LeagueName = "NB1",
+                        LeagueRanking = 28,
+                        CountryId = 4
+                    }
+                }.AsQueryable());
+
+            ll = new LeagueLogic(mockLeagueRepository.Object);
 
             mockTeamRepository.Setup((t) => t.Create(It.IsAny<Team>()));
             mockTeamRepository.Setup((t) => t.ReadAll()).Returns(
@@ -32,15 +79,17 @@ namespace CN34ZF_HFT_2021221.Test
                 {
                     new Team()
                     {
+                        TeamId = 61,
                         TeamName = "Borussia Dortmund",
                         YearofFoundation = 1944,
-                        League = fakeLeague
+                        LeagueId = 5
                     },
                     new Team()
                     {
-                        TeamName = "Bayern München",
+                        TeamId = 62,
+                        TeamName = "Debreceni VSC",
                         YearofFoundation = 1899,
-                        League = fakeLeague
+                        LeagueId = 4
                     }
                 }.AsQueryable());
 
@@ -91,6 +140,58 @@ namespace CN34ZF_HFT_2021221.Test
                 }), Throws.Exception);
             }
 
+        }
+        [Test]
+        public void CountryCreate()
+        {
+            Country newCountry = new Country() { CountryName = "Belgium" };
+
+            cl.Create(newCountry);
+            mockCountryRepository.Verify(c => c.Create(newCountry), Times.Once);
+
+        }
+
+        [Test]
+        public void LeagueCreate()
+        {
+            League newLeague = new League() { LeagueName = "Belgian First Division A" };
+
+            ll.Create(newLeague);
+            mockLeagueRepository.Verify(c => c.Create(newLeague), Times.Once);
+
+        }
+
+        [Test]
+        public void TeamCreate()
+        {
+            Team newTeam = new Team() { TeamName = "Anderlecht" };
+
+            tl.Create(newTeam);
+            mockTeamRepository.Verify(c => c.Create(newTeam), Times.Once);
+
+        }
+
+        //[Test]
+        //public void TeamRead()
+        //{
+        //    Team team = tl.Read(61);
+
+        //    Assert.That(team.TeamId, Is.EqualTo(61));
+        //    Assert.That(team.YearofFoundation, Is.EqualTo(1944));
+        //}
+
+        [Test]
+        public void TeamDelete()
+        {
+            tl.Delete(61);
+            mockTeamRepository.Verify(t => t.Delete(It.IsAny<int>()), Times.Once);
+        }
+
+        [Test]
+        public void LeagueDelete()
+        {
+            ll.Delete(4);
+            mockLeagueRepository.Verify(t => t.Delete(It.IsAny<int>()), Times.Once);
         }
     }
 }
