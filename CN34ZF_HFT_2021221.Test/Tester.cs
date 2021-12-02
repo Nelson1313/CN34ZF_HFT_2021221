@@ -26,9 +26,6 @@ namespace CN34ZF_HFT_2021221.Test
         [SetUp]
         public void Init()
         {
-            Country europe = new Country();
-            europe.CountryId = 10;
-            europe.CountryName = "Europe";
             var countries = new List<Country>()
                     {
                     new Country()
