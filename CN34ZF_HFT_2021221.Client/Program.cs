@@ -11,15 +11,20 @@ namespace CN34ZF_HFT_2021221.Client
     {
         public static void Main(string[] args)
         {
-            System.Threading.Thread.Sleep(8000);
             RestService rest = new RestService("http://localhost:56403");
 
             var countries = rest.Get<Country>("countries");
+            //Console.WriteLine("Összes ország: " + countries);
+
             var leagues = rest.Get<League>("leagues");
 
             var averagefoundation = rest.GetSingle<double>("stat/averagefoundation");
+            Console.WriteLine("Átlagos alapítási év: " + averagefoundation);
+
             var averagefoundationbyleague = rest.Get<KeyValuePair<string, double>>("stat/averagefoundationbyleague");
-            ;
+            // Console.WriteLine("Átlagos alapítási év ligánként: " + averagefoundationbyleague);
+
+            Console.ReadKey();
             //var menu = new ConsoleMenu()
             //    .Add(">>COUNTRIES<<", () => )
             //    .Add(" \t >>List of average number of teams/country<<", () => )
