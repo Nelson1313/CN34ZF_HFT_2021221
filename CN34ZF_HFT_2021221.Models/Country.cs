@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CN34ZF_HFT_2021221.Models
 {
-    [Table("Countries")]
+    //[Table("Countries")]
     public class Country
     {
         [Key]
@@ -23,35 +23,14 @@ namespace CN34ZF_HFT_2021221.Models
 
         public int Area { get; set; }
 
-        [NotMapped]
-        public string MainData => $"[{this.CountryId}] : {this.CountryName}, (Population: {this.Population}) (Language: {this.Language}) (Area: {this.Area}) ";
-
-        [NotMapped]
-        public virtual ICollection<Team> Teams { get; }
 
         [NotMapped]
         public virtual ICollection<League> Leagues { get; }
 
-        public override string ToString()
+        public Country()
         {
-            return $"Id: {this.CountryId}, Name: {this.CountryName}";
+            Leagues = new HashSet<League>();
         }
 
-        public override bool Equals(object obj)
-        {
-            if (obj is Country)
-            {
-                Country other = obj as Country;
-                return this.CountryId == other.CountryId &&
-                    this.CountryName == other.CountryName &&
-                    this.Area == other.Area;
-            }
-
-            return false;
-        }
-        public override int GetHashCode()
-        {
-            return (int)this.CountryId + this.Area.GetHashCode();
-        }
     }
 }

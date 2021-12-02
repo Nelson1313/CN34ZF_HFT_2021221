@@ -11,7 +11,7 @@ namespace CN34ZF_HFT_2021221.Repository
     {
         // C(R)RUD
         void Create(Country country);
-        Country ReadOne(int countryId);
+        Country Read(int countryId);
         IQueryable<Country> ReadAll(); // query
         void Update(Country country);
         void Delete(int countryId);

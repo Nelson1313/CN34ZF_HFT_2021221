@@ -16,7 +16,7 @@ namespace CN34ZF_HFT_2021221.Logic
 
         Country Read(int id);
         void Create(Country country);
-        IQueryable<Country> ReadAll();
+        IEnumerable<Country> ReadAll();
         void Update(Country country);
         void Delete(int countryId);
     }

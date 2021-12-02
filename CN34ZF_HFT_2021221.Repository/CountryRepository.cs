@@ -23,7 +23,7 @@ namespace CN34ZF_HFT_2021221.Repository
             context.SaveChanges();
         }
 
-        public Country ReadOne(int countryId)
+        public Country Read(int countryId)
         {
             return context
                 .Countries
@@ -37,7 +37,7 @@ namespace CN34ZF_HFT_2021221.Repository
 
         public void Update(Country country)
         {
-            Country old = ReadOne(country.CountryId);
+            Country old = Read(country.CountryId);
 
             // NULL CHECK
 
@@ -51,7 +51,7 @@ namespace CN34ZF_HFT_2021221.Repository
 
         public void Delete(int countryId)
         {
-            context.Countries.Remove(ReadOne(countryId));
+            context.Countries.Remove(Read(countryId));
             context.SaveChanges();
         }
     }

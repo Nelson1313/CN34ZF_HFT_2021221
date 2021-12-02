@@ -11,7 +11,7 @@ namespace CN34ZF_HFT_2021221.Repository
     {
         // C(R)RUD
         void Create(League league);
-        League ReadOne(int leagueId);
+        League Read(int leagueId);
         IQueryable<League> ReadAll(); // query
         void Update(League league);
         void Delete(int leagueId);

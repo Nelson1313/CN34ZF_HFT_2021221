@@ -11,7 +11,7 @@ namespace CN34ZF_HFT_2021221.Repository
     {
         // C(R)RUD
         void Create(Team team);
-        Team ReadOne(int teamId);
+        Team Read(int teamId);
         IQueryable<Team> ReadAll(); // query
         void Update(Team team);
         void Delete(int teamId);

@@ -23,7 +23,7 @@ namespace CN34ZF_HFT_2021221.Repository
             context.SaveChanges();
         }
 
-        public Team ReadOne(int teamId)
+        public Team Read(int teamId)
         {
             return context
                 .Teams
@@ -37,7 +37,7 @@ namespace CN34ZF_HFT_2021221.Repository
 
         public void Update(Team team)
         {
-            Team old = ReadOne(team.TeamId);
+            Team old = Read(team.TeamId);
 
             // NULL CHECK
 
@@ -51,7 +51,7 @@ namespace CN34ZF_HFT_2021221.Repository
 
         public void Delete(int teamId)
         {
-            context.Teams.Remove(ReadOne(teamId));
+            context.Teams.Remove(Read(teamId));
             context.SaveChanges();
         }
     }

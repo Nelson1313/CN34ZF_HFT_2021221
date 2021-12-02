@@ -27,47 +27,45 @@ namespace CN34ZF_HFT_2021221.Test
 
             public IQueryable<Team> ReadAll()
             {
-                Country c1 = new Country() { CountryName = "Ligue 1" };
-                Country c2 = new Country() { CountryName = "NB1" };
-
                 return new List<Team>() {
                     new Team() {
-                        TeamName = "Paris Saint-Germain FC",
+                        TeamName = "Leganes",
                         YearofFoundation = 1970,
-                        Country = c1
+                        LeagueId = 1
                     },
                     new Team() {
-                        TeamName = "Ferencvárosi TC",
+                        TeamName = "Las Palmas",
                         YearofFoundation = 1899,
-                        Country = c2
+                        LeagueId = 1
                     },
                     new Team() {
-                        TeamName = "Újpest FC",
+                        TeamName = "Bournemouth",
                         YearofFoundation = 1885,
-                        Country = c2
+                        LeagueId = 3
                     },
                     new Team() {
-                        TeamName = "Debreceni VSC",
+                        TeamName = "Fulham",
                         YearofFoundation = 1902,
-                        Country = c2
+                        LeagueId = 3
                     },
                     new Team() {
-                        TeamName = "Olympique Lyonnais",
+                        TeamName = "Zaragoza",
                         YearofFoundation = 1899,
-                        Country = c1
+                        LeagueId = 1
                     },
                     new Team() {
-                        TeamName = "AS Monaco FC",
+                        TeamName = "Sheffield United",
                         YearofFoundation = 1924,
-                        Country = c1
+                        LeagueId = 3
                     }
                 }.AsQueryable();
             }
 
-            public Team ReadOne(int teamId)
+            public Team Read(int teamId)
             {
                 throw new NotImplementedException();
             }
+
 
             public void Update(Team team)
             {

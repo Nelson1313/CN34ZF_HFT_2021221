@@ -40,9 +40,9 @@ namespace CN34ZF_HFT_2021221.Logic
             repo.Create(team);
         }
 
-        public Team ReadOne(int teamId)
+        public Team Read(int teamId)
         {
-            return repo.ReadOne(teamId);
+            return repo.Read(teamId);
         }
 
         public void Delete(int teamId)
@@ -50,7 +50,7 @@ namespace CN34ZF_HFT_2021221.Logic
             repo.Delete(teamId);
         }
 
-        public IQueryable<Team> ReadAll()
+        public IEnumerable<Team> ReadAll()
         {
             return repo.ReadAll();
         }
@@ -58,11 +58,7 @@ namespace CN34ZF_HFT_2021221.Logic
         public void Update(Team team)
         {
             repo.Update(team);
-        }
 
-        public Team Read(int id)
-        {
-            return repo.ReadOne(id);
         }
     }
 }

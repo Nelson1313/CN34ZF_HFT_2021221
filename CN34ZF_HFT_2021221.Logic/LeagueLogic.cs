@@ -33,19 +33,14 @@ namespace CN34ZF_HFT_2021221.Logic
                     x.Key,
                     x.Average(x => x.NumberofTeams)));
         }
-
-        public League Read(int id)
-        {
-            return repo.ReadOne(id);
-        }
         public void Create(League league)
         {
             repo.Create(league);
         }
 
-        public League ReadOne(int leagueId)
+        public League Read(int leagueId)
         {
-            return repo.ReadOne(leagueId);
+            return repo.Read(leagueId);
         }
 
         public void Delete(int leagueId)
@@ -53,7 +48,7 @@ namespace CN34ZF_HFT_2021221.Logic
             repo.Delete(leagueId);
         }
 
-        public IQueryable<League> ReadAll()
+        public IEnumerable<League> ReadAll()
         {
             return repo.ReadAll();
         }

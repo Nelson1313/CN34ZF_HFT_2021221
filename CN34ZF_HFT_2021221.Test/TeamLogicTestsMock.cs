@@ -21,9 +21,9 @@ namespace CN34ZF_HFT_2021221.Test
             Mock<ITeamRepository> mockTeamRepository =
                 new Mock<ITeamRepository>();
 
-            Country fakeCountry = new Country()
+            League fakeLeague = new League()
             {
-                CountryName = "France"
+                LeagueName = "Bundesliga"
             };
 
             mockTeamRepository.Setup((t) => t.Create(It.IsAny<Team>()));
@@ -32,15 +32,15 @@ namespace CN34ZF_HFT_2021221.Test
                 {
                     new Team()
                     {
-                        TeamName = "Lille OSC",
+                        TeamName = "Borussia Dortmund",
                         YearofFoundation = 1944,
-                        Country = fakeCountry
+                        League = fakeLeague
                     },
                     new Team()
                     {
-                        TeamName = "Olympique de Marseille",
+                        TeamName = "Bayern München",
                         YearofFoundation = 1899,
-                        Country = fakeCountry
+                        League = fakeLeague
                     }
                 }.AsQueryable());
 
@@ -54,7 +54,7 @@ namespace CN34ZF_HFT_2021221.Test
             var result = tl.AverageFoundation();
 
             //ASSERT
-            Assert.That(result, Is.EqualTo(1900));
+            Assert.That(result, Is.EqualTo(1921.5));
         }
 
         [Test]
@@ -66,10 +66,9 @@ namespace CN34ZF_HFT_2021221.Test
             //ASSERT
             Assert.That(result[0],
                 Is.EqualTo(new KeyValuePair<string, double>
-                ("Lille OSC", 1944)));
+                ("Borussia Dortmund", 1944)));
         }
 
-        [TestCase(-3000, false)]
         [TestCase(3000, true)]
         public void CreateTeamTest(int foundation, bool result)
         {

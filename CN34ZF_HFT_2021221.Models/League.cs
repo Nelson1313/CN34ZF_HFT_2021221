@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CN34ZF_HFT_2021221.Models
@@ -14,7 +15,6 @@ namespace CN34ZF_HFT_2021221.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int LeagueId { get; set; }
-        
 
         public string LeagueName { get; set; }
 
@@ -22,40 +22,14 @@ namespace CN34ZF_HFT_2021221.Models
 
         public int LeagueRanking { get; set; }
 
-
         [NotMapped]
-        public string MainData => $"[{this.LeagueId}] {this.Country}, {this.LeagueName}, Country Id: {this.CountryId}, Number of teams: {this.NumberofTeams}, FirstClass: {this.LeagueRanking} ";
+        [JsonIgnore]
+        public virtual Country Country { get; set; }
 
-#nullable enable
-        [NotMapped]
-        public virtual Country? Country { get; set; }
-#nullable disable
+        [ForeignKey(nameof(Country))]
         public int CountryId { get; set; }
 
-        public override string ToString()
-        {
-            return $"Id: {this.LeagueId}, Country of the league: {this.Country}, Name of the league: {this.LeagueName}, Country id: {this.CountryId}";
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (obj is League)
-            {
-                League other = obj as League;
-                return this.CountryId == other.CountryId &&
-                    this.LeagueId == other.LeagueId &&
-                    this.LeagueRanking == other.LeagueRanking &&
-                    this.NumberofTeams == other.NumberofTeams &&
-                    this.LeagueName == other.LeagueName &&
-                    this.Country == other.Country;
-            }
-
-            return false;
-        }
-
-        public override int GetHashCode()
-        {
-            return (int)this.LeagueId + this.LeagueRanking.GetHashCode();
-        }
+        [NotMapped]
+        public virtual ICollection<Team> Teams { get; }
     }
 }

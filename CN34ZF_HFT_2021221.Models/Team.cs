@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CN34ZF_HFT_2021221.Models
@@ -23,38 +24,10 @@ namespace CN34ZF_HFT_2021221.Models
         public string Manager { get; set; }
 
         [NotMapped]
-        public string MainData => $"[{this.TeamId}] Country: {this.CountryId} , Team name: {this.TeamName}, Seat: {this.Seat}, Manager: {this.Manager}, Year of foundation: {this.YearofFoundation}";
+        [JsonIgnore]
+        public virtual League League { get; set; }
 
-#nullable enable
-        [NotMapped]
-        public virtual Country? Country { get; set; }
-#nullable disable
-        public int CountryId { get; set; }
-
-        public override string ToString()
-        {
-            return $"Id: {this.TeamId}, Country: {this.Country.CountryName}, Team name: {this.TeamName}";
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (obj is Team)
-            {
-                Team other = obj as Team;
-                return this.TeamId == other.TeamId &&
-                    this.CountryId == other.CountryId &&
-                    this.TeamName == other.TeamName &&
-                    this.Manager == other.Manager &&
-                    this.Seat == other.Seat &&
-                    this.YearofFoundation == other.YearofFoundation;
-            }
-
-            return false;
-        }
-
-        public override int GetHashCode()
-        {
-            return (int)this.TeamId + this.TeamName.GetHashCode();
-        }
+        [ForeignKey(nameof(League))]
+        public int LeagueId { get; set; }
     }
 }

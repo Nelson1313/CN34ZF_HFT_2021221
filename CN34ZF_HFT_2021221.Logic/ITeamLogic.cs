@@ -16,7 +16,7 @@ namespace CN34ZF_HFT_2021221.Logic
 
         Team Read(int id);
         void Create(Team team);
-        IQueryable<Team> ReadAll();
+        IEnumerable<Team> ReadAll();
         void Update(Team team);
         void Delete(int teamId);
     }

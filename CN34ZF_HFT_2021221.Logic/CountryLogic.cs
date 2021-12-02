@@ -34,9 +34,9 @@ namespace CN34ZF_HFT_2021221.Logic
                     x.Average(x => x.Population)));
         }
 
-        public Country Read(int id)
+        public Country Read(int countryId)
         {
-            return repo.ReadOne(id);
+            return repo.Read(countryId);
         }
 
         public void Create(Country country)
@@ -44,17 +44,13 @@ namespace CN34ZF_HFT_2021221.Logic
             repo.Create(country);
         }
 
-        public Country ReadOne(int countryId)
-        {
-            return repo.ReadOne(countryId);
-        }
 
         public void Delete(int countryId)
         {
             repo.Delete(countryId);
         }
 
-        public IQueryable<Country> ReadAll()
+        public IEnumerable<Country> ReadAll()
         {
             return repo.ReadAll();
         }
