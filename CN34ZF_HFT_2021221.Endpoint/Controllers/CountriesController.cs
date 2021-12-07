@@ -20,35 +20,35 @@ namespace CN34ZF_HFT_2021221.Endpoint.Controllers
             this.cl = cl;
         }
 
-        // GET: /country
+        // GET: /countries
         [HttpGet]
         public IEnumerable<Country> Get()
         {
             return cl.ReadAll();
         }
 
-        // GET /country/5
+        // GET /countries/5
         [HttpGet("{id}")]
         public Country Get(int id)
         {
             return cl.Read(id);
         }
 
-        // POST /country
+        // POST /countries
         [HttpPost]
         public void Post([FromBody] Country value)
         {
             cl.Create(value);
         }
 
-        // PUT /country
+        // PUT /countries
         [HttpPut]
         public void Put([FromBody] Country value)
         {
             cl.Update(value);
         }
 
-        // DELETE /country/5
+        // DELETE /countries/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

@@ -22,35 +22,35 @@ namespace CN34ZF_HFT_2021221.Endpoint.Controllers
             this.tl = tl;
         }
 
-        // GET: /team
+        // GET: /teams
         [HttpGet]
         public IEnumerable<Team> Get()
         {
             return tl.ReadAll();
         }
 
-        // GET /team/5
+        // GET /teams/5
         [HttpGet("{id}")]
         public Team Get(int id)
         {
             return tl.Read(id);
         }
 
-        // POST /team
+        // POST /teams
         [HttpPost]
         public void Post([FromBody] Team value)
         {
             tl.Create(value);
         }
 
-        // PUT /team
+        // PUT /teams
         [HttpPut]
         public void Put([FromBody] Team value)
         {
             tl.Update(value);
         }
 
-        // DELETE /team/5
+        // DELETE /teams/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
