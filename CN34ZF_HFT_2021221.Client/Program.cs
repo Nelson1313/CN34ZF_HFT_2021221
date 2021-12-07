@@ -23,6 +23,7 @@ namespace CN34ZF_HFT_2021221.Client
             //Console.WriteLine("Átlagos alapítási év: " + averagefoundation);
 
             var averagefoundationbyleague = rest.Get<KeyValuePair<string, double>>("stat/averagefoundationbyleague");
+            // Console.WriteLine("Átlagos alapítási év ligánként: ("stat/averagefoundationbyleague");
             // Console.WriteLine("Átlagos alapítási év ligánként: " + averagefoundationbyleague);
 
             var subCountryMenu = new ConsoleMenu(args, level: 1)
