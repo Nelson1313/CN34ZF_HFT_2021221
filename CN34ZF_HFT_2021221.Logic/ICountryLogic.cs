@@ -11,6 +11,8 @@ namespace CN34ZF_HFT_2021221.Logic
     {
         double LowestPopulation();
 
+        double AveragePopulation();
+
         IEnumerable<KeyValuePair<string, double>>
             LowestPopulationByCountry();
 

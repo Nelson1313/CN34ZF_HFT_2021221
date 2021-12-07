@@ -20,6 +20,13 @@ namespace CN34ZF_HFT_2021221.Logic
         {
             return repo
                 .ReadAll()
+                .Min(x => x.Population);
+        }
+
+        public double AveragePopulation()
+        {
+            return repo
+                .ReadAll()
                 .Average(x => x.Population);
         }
 

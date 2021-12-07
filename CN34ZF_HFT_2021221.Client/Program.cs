@@ -11,20 +11,7 @@ namespace CN34ZF_HFT_2021221.Client
     {
         public static RestService rest = new RestService("http://localhost:56403");
         public static void Main(string[] args)
-        {
-
-            var countries = rest.Get<Country>("countries");
-            //Console.WriteLine("Összes ország: " + countries);
-
-            
-
-
-            var averagefoundation = rest.GetSingle<double>("stat/averagefoundation");
-            //Console.WriteLine("Átlagos alapítási év: " + averagefoundation);
-
-            var averagefoundationbyleague = rest.Get<KeyValuePair<string, double>>("stat/averagefoundationbyleague");
-            // Console.WriteLine("Átlagos alapítási év ligánként: ("stat/averagefoundationbyleague");
-            // Console.WriteLine("Átlagos alapítási év ligánként: " + averagefoundationbyleague);
+        {     
 
             var subCountryMenu = new ConsoleMenu(args, level: 1)
                 .Add(">> LIST ALL", () => ListAllCountries())
@@ -68,16 +55,16 @@ namespace CN34ZF_HFT_2021221.Client
                });
 
             var subNonCrudMenu = new ConsoleMenu(args, level: 1)
-               .Add(">> LIST ALL TEAMS", () => ListAllTeams())
-               .Add(">> GET BY ID", () => GetTeamByID())
-               //.Add(">> ADD ONE", () => AddOne())
-               //.Add(">> DELETE ONE", () => Delete())
-               //.Add(">> UPDATE ONE", () => Update())
+               .Add(">> AVERAGE FOUNDATION (BY TEAM)", () => AverageFoundation())
+               .Add(">> LOWEST FOUNDATION (BY TEAM)", () => LowestFoundation())
+               .Add(">> AVERAGE POPULATION (BY COUNTRY)", () => AveragePopulation())
+               .Add(">> LOWEST POPULATION (BY COUNTRY)", () => LowestPopulation())
+               .Add(">> AVERAGE NUMBER OF TEAMS (BY LEAGUE)", () => AverageNumberofTeams())
                .Add(">> BACK", ConsoleMenu.Close)
                .Configure(config =>
                {
                    config.EnableWriteTitle = true;
-                   config.Title = "TEAMS MENU";
+                   config.Title = "NON-CRUD MENU";
 
 
                });
@@ -104,7 +91,6 @@ namespace CN34ZF_HFT_2021221.Client
             Console.WriteLine("Press any key to return...");
             Console.ReadLine();
         }
-
         private static void ListAllLeagues()
         {
             Console.WriteLine("LEAGUES: ");
@@ -112,7 +98,6 @@ namespace CN34ZF_HFT_2021221.Client
             Console.WriteLine("Press any key to return...");
             Console.ReadLine();
         }
-
         private static void ListAllTeams()
         { 
             Console.WriteLine("TEAMS: ");
@@ -120,7 +105,6 @@ namespace CN34ZF_HFT_2021221.Client
             Console.WriteLine("Press any key to return...");
             Console.ReadLine();
         }
-
         private static void GetCountryByID()
         {
             Console.WriteLine("Kérem adjon meg egy ország ID-t: ");
@@ -130,7 +114,6 @@ namespace CN34ZF_HFT_2021221.Client
             Console.WriteLine("Press any key to return...");
             Console.ReadLine();
         }
-
         private static void GetLeagueByID()
         {
             Console.WriteLine("Kérem adjon meg egy liga ID-t: ");
@@ -140,7 +123,6 @@ namespace CN34ZF_HFT_2021221.Client
             Console.WriteLine("Press any key to return...");
             Console.ReadLine();
         }
-
         private static void GetTeamByID()
         {
             Console.WriteLine("Kérem adjon meg egy csapat ID-t: ");
@@ -150,7 +132,7 @@ namespace CN34ZF_HFT_2021221.Client
             Console.WriteLine("Press any key to return...");
             Console.ReadLine();
         }
-        public static void DeleteCountry()
+        private static void DeleteCountry()
         {
             Console.WriteLine("Kérem adjon meg egy ország ID-t: ");
             int ID = int.Parse(Console.ReadLine());
@@ -159,7 +141,7 @@ namespace CN34ZF_HFT_2021221.Client
             Console.WriteLine("Press any key to return...");
             Console.ReadLine();
         }
-        public static void DeleteLeague()
+        private static void DeleteLeague()
         {
             Console.WriteLine("Kérem adjon meg egy liga ID-t: ");
             int ID = int.Parse(Console.ReadLine());
@@ -168,8 +150,7 @@ namespace CN34ZF_HFT_2021221.Client
             Console.WriteLine("Press any key to return...");
             Console.ReadLine();
         }
-
-        public static void DeleteTeam()
+        private static void DeleteTeam()
         {
             Console.WriteLine("Kérem adjon meg egy csapat ID-t: ");
             int ID = int.Parse(Console.ReadLine());
@@ -178,8 +159,7 @@ namespace CN34ZF_HFT_2021221.Client
             Console.WriteLine("Press any key to return...");
             Console.ReadLine();
         }
-
-        public static void AddCountry()
+        private static void AddCountry()
         {
             Country item = new Country();
             Console.WriteLine("Kérem adjon meg egy ország nevet: ");
@@ -200,8 +180,7 @@ namespace CN34ZF_HFT_2021221.Client
             Console.WriteLine("Press any key to return...");
             Console.ReadLine();
         }
-
-        public static void AddLeague()
+        private static void AddLeague()
         {
             League item = new League();
             Console.WriteLine("Kérem adjon meg egy liga nevet: ");
@@ -219,8 +198,7 @@ namespace CN34ZF_HFT_2021221.Client
             Console.WriteLine("Press any key to return...");
             Console.ReadLine();
         }
-
-        public static void AddTeam()
+        private static void AddTeam()
         {
             Console.WriteLine("Kérem adjon meg egy csapat ID-t: ");
             int ID = int.Parse(Console.ReadLine());
@@ -243,7 +221,7 @@ namespace CN34ZF_HFT_2021221.Client
             Console.WriteLine("Press any key to return...");
             Console.ReadLine();
         }
-        public static void UpdateCountry()
+        private static void UpdateCountry()
         {
             Console.WriteLine("Kérem adjon meg egy ország ID-t: ");
             int ID = int.Parse(Console.ReadLine());
@@ -266,7 +244,7 @@ namespace CN34ZF_HFT_2021221.Client
             Console.WriteLine("Press any key to return...");
             Console.ReadLine();
         }
-        public static void UpdateLeague()
+        private static void UpdateLeague()
         {
             Console.WriteLine("Kérem adjon meg egy liga ID-t: ");
             int ID = int.Parse(Console.ReadLine());
@@ -286,8 +264,7 @@ namespace CN34ZF_HFT_2021221.Client
             Console.WriteLine("Press any key to return...");
             Console.ReadLine();
         }
-
-        public static void UpdateTeam()
+        private static void UpdateTeam()
         {
             Console.WriteLine("Kérem adjon meg egy csapat ID-t: ");
             int ID = int.Parse(Console.ReadLine());
@@ -310,5 +287,45 @@ namespace CN34ZF_HFT_2021221.Client
             Console.WriteLine("Press any key to return...");
             Console.ReadLine();
         }
+        private static void AveragePopulation()
+        {
+            var averagepopulation = rest.GetSingle<double>("stat/averagepopulation");
+            Console.WriteLine("Átlagos népesség: " + averagepopulation);
+            Console.WriteLine("Press any key to return...");
+            Console.ReadLine();
+        }
+        private static void LowestPopulation()
+        {
+            var lowestpopulation = rest.GetSingle<double>("stat/lowestpopulation");
+            Console.WriteLine("Legalacsonyabb népesség: " + lowestpopulation);
+            Console.WriteLine("Press any key to return...");
+            Console.ReadLine();
+        }
+
+        private static void AverageFoundation()
+        {
+            var averagefoundation = rest.GetSingle<double>("stat/averagefoundation");
+            Console.WriteLine("Átlagos alapítási év: " + averagefoundation);
+            Console.WriteLine("Press any key to return...");
+            Console.ReadLine();
+        }
+
+        private static void LowestFoundation()
+        {
+            var lowestfoundation = rest.GetSingle<double>("stat/lowestfoundation");
+            Console.WriteLine("Legalacsonyabb alapítási év: " + lowestfoundation);
+            Console.WriteLine("Press any key to return...");
+            Console.ReadLine();
+        }
+
+        private static void AverageNumberofTeams()
+        {
+            var avgnumberofteams = rest.GetSingle<double>("stat/averagenumberofteams");
+            Console.WriteLine("Átlagos csapatok száma: " + avgnumberofteams);
+            Console.WriteLine("Press any key to return...");
+            Console.ReadLine();
+        }
+        
+
     }
 }

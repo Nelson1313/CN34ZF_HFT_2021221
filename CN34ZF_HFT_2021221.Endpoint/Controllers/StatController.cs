@@ -15,10 +15,14 @@ namespace CN34ZF_HFT_2021221.Endpoint.Controllers
     {
 
         ITeamLogic tl;
+        ICountryLogic cl;
+        ILeagueLogic ll;
 
-        public StatController(ITeamLogic tl)
+        public StatController(ITeamLogic tl, ICountryLogic cl, ILeagueLogic ll)
         {
             this.tl = tl;
+            this.cl = cl;
+            this.ll = ll;
         }
         // GET: stat/avgfoundation
         [HttpGet]
@@ -27,12 +31,32 @@ namespace CN34ZF_HFT_2021221.Endpoint.Controllers
             return tl.AverageFoundation();
         }
 
-        // GET stat/averagefoundationbyleague
+        // GET: stat/lowestfoundation
         [HttpGet]
-        public IEnumerable<KeyValuePair<string, double>> AverageFoundationByLeague()
+        public double LowestFoundation()
         {
-            return tl.AverageFoundationByLeague();
+            return tl.LowestFoundation();
         }
 
+        // GET stat/lowestpopulation
+        [HttpGet]
+        public double LowestPopulation()
+        {
+            return cl.LowestPopulation();
+        }
+
+        // GET stat/averagepopulation
+        [HttpGet]
+        public double AveragePopulation()
+        {
+            return cl.AveragePopulation();
+        }
+
+        // GET: stat/averagenumberofteams
+        [HttpGet]
+        public double AverageNumberofTeams()
+        {
+            return ll.AverageNumberofTeams();
+        }
     }
 }
