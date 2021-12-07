@@ -39,11 +39,11 @@ namespace CN34ZF_HFT_2021221.Client
                });
 
             var subLeagueMenu = new ConsoleMenu(args, level: 1)
-                .Add(">> LIST ALL LEAGUE", () => ListAllLeagues())
+               .Add(">> LIST ALL LEAGUE", () => ListAllLeagues())
                .Add(">> GET BY ID", () => GetLeagueByID())
-               //.Add(">> ADD ONE", () => AddOne())
+               .Add(">> ADD ONE", () => AddLeague())
                .Add(">> DELETE ONE", () => DeleteLeague())
-               //.Add(">> UPDATE ONE", () => Update())
+               .Add(">> UPDATE ONE", () => UpdateLeague())
                .Add(">> BACK", ConsoleMenu.Close)
                .Configure(config =>
                {
@@ -52,11 +52,11 @@ namespace CN34ZF_HFT_2021221.Client
                });
 
             var subTeamMenu = new ConsoleMenu(args, level: 1)
-                .Add(">> LIST ALL TEAMS", () => ListAllTeams())
+               .Add(">> LIST ALL TEAMS", () => ListAllTeams())
                .Add(">> GET BY ID", () => GetTeamByID())
-               //.Add(">> ADD ONE", () => AddOne())
+               .Add(">> ADD ONE", () => AddTeam())
                .Add(">> DELETE ONE", () => DeleteTeam())
-               //.Add(">> UPDATE ONE", () => Update())
+               .Add(">> UPDATE ONE", () => UpdateTeam())
                .Add(">> BACK", ConsoleMenu.Close)
                .Configure(config =>
                {
@@ -67,7 +67,7 @@ namespace CN34ZF_HFT_2021221.Client
                });
 
             var subNonCrudMenu = new ConsoleMenu(args, level: 1)
-                .Add(">> LIST ALL TEAMS", () => ListAllTeams())
+               .Add(">> LIST ALL TEAMS", () => ListAllTeams())
                .Add(">> GET BY ID", () => GetTeamByID())
                //.Add(">> ADD ONE", () => AddOne())
                //.Add(">> DELETE ONE", () => Delete())
@@ -181,9 +181,6 @@ namespace CN34ZF_HFT_2021221.Client
         public static void AddCountry()
         {
             Country item = new Country();
-            Console.WriteLine("Kérem adjon meg egy ország ID-t: ");
-            int ID = int.Parse(Console.ReadLine());
-            item.CountryId = ID;
             Console.WriteLine("Kérem adjon meg egy ország nevet: ");
             string name = Console.ReadLine();
             item.CountryName = name;
@@ -203,23 +200,112 @@ namespace CN34ZF_HFT_2021221.Client
             Console.ReadLine();
         }
 
+        public static void AddLeague()
+        {
+            League item = new League();
+            Console.WriteLine("Kérem adjon meg egy liga nevet: ");
+            string name = Console.ReadLine();
+            item.LeagueName = name;
+            Console.WriteLine("Kérem adjon meg egy liga létszámot: ");
+            int numberofteams = int.Parse(Console.ReadLine());
+            item.NumberofTeams = numberofteams;
+            Console.WriteLine("Kérem adjon meg egy liga rangsorolást: ");
+            int leagueranking = int.Parse(Console.ReadLine());
+            item.LeagueRanking = leagueranking;
+
+            rest.Post(item, "leagues");
+            Console.WriteLine("Liga létrehozva!");
+            Console.WriteLine("Press any key to return...");
+            Console.ReadLine();
+        }
+
+        public static void AddTeam()
+        {
+            Console.WriteLine("Kérem adjon meg egy csapat ID-t: ");
+            int ID = int.Parse(Console.ReadLine());
+            Team item = new Team();
+            Console.WriteLine("Kérem adjon meg egy csapat nevet: ");
+            string name = Console.ReadLine();
+            item.TeamName = name;
+            Console.WriteLine("Kérem adjon meg egy csapat alapítási évet: ");
+            int population = int.Parse(Console.ReadLine());
+            item.YearofFoundation = population;
+            Console.WriteLine("Kérem adjon meg egy csapat stadiont: ");
+            string seat = Console.ReadLine();
+            item.Seat = seat;
+            Console.WriteLine("Kérem adjon meg egy csapat menedzser nevet: ");
+            string manager = Console.ReadLine();
+            item.Manager = manager;
+
+            rest.Post(item, "teams");
+            Console.WriteLine("Csapat létrehozva!");
+            Console.WriteLine("Press any key to return...");
+            Console.ReadLine();
+        }
         public static void UpdateCountry()
         {
-            Country item = new Country();
+            Console.WriteLine("Kérem adjon meg egy ország ID-t: ");
+            int ID = int.Parse(Console.ReadLine());
+            Country old = rest.Get<Country>(ID, "countries");
             Console.WriteLine("Kérem adjon meg egy új ország nevet: ");
             string name = Console.ReadLine();
-            item.CountryName = name;
+            old.CountryName = name;
             Console.WriteLine("Kérem adjon meg egy új ország népességet: ");
             int population = int.Parse(Console.ReadLine());
-            item.Population = population;
+            old.Population = population;
             Console.WriteLine("Kérem adjon meg egy új ország nyelvet: ");
             string language = Console.ReadLine();
-            item.Language = language;
-            Console.WriteLine("Kérem adjon meg egy új ország területet: ");
+            old.Language = language;
+            Console.WriteLine("Kérem adjon meg egy csapat új ország területet: ");
             int area = int.Parse(Console.ReadLine());
-            item.Area = area;
+            old.Area = area;
+            rest.Put(old, "countries");
 
-            rest.Put(item, "countries");
+            Console.WriteLine("Ország módosítva!");
+            Console.WriteLine("Press any key to return...");
+            Console.ReadLine();
+        }
+        public static void UpdateLeague()
+        {
+            Console.WriteLine("Kérem adjon meg egy liga ID-t: ");
+            int ID = int.Parse(Console.ReadLine());
+            League old = rest.Get<League>(ID, "leagues");
+            Console.WriteLine("Kérem adjon meg egy új liga nevet: ");
+            string name = Console.ReadLine();
+            old.LeagueName = name;
+            Console.WriteLine("Kérem adjon meg egy csapat új liga rangsorolást: ");
+            int leagueranking = int.Parse(Console.ReadLine());
+            old.LeagueRanking = leagueranking;
+            Console.WriteLine("Kérem adjon meg egy új csapat stadiont: ");
+            int numberofteams = int.Parse(Console.ReadLine());
+            old.NumberofTeams = numberofteams;
+            rest.Put(old, "leagues");
+
+            Console.WriteLine("Liga módosítva!");
+            Console.WriteLine("Press any key to return...");
+            Console.ReadLine();
+        }
+
+        public static void UpdateTeam()
+        {
+            Console.WriteLine("Kérem adjon meg egy csapat ID-t: ");
+            int ID = int.Parse(Console.ReadLine());
+            Team old = rest.Get<Team>(ID, "teams");
+            Console.WriteLine("Kérem adjon meg egy új csapat nevet: ");
+            string name = Console.ReadLine();
+            old.TeamName = name;
+            Console.WriteLine("Kérem adjon meg egy csapat új alapítási évet: ");
+            int yearoffoundation = int.Parse(Console.ReadLine());
+            old.YearofFoundation = yearoffoundation;
+            Console.WriteLine("Kérem adjon meg egy új csapat stadiont: ");
+            string seat = Console.ReadLine();
+            old.Seat = seat;
+            Console.WriteLine("Kérem adjon meg egy csapat új menedzser nevet: ");
+            string manager = Console.ReadLine();
+            old.Manager = manager;
+            rest.Put(old, "teams");
+
+            Console.WriteLine("Csapat módosítva!");
             Console.WriteLine("Press any key to return...");
             Console.ReadLine();
         }
