@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace FootballDbApp.WpfClient
+namespace CN34ZF_HFT_2021221.WPFClient
 {
     public class MainWindowViewModel : ObservableRecipient
     {
@@ -21,7 +21,7 @@ namespace FootballDbApp.WpfClient
         public Team SelectedTeam
         {
             get { return selectedTeam; }
-            set 
+            set
             {
                 selectedTeam = new Team()
                 {
@@ -37,7 +37,7 @@ namespace FootballDbApp.WpfClient
         public ICommand DeleteTeamCommand { get; set; }
         public ICommand UpdateTeamCommand { get; set; }
 
-public MainWindowViewModel()
+        public MainWindowViewModel()
         {
             Teams = new RestCollection<Team>("http://localhost:56403/", "teams", "hub");
             CreateTeamCommand = new RelayCommand(() =>

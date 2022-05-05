@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FootballDbApp.WpfClient
+namespace CN34ZF_HFT_2021221.WPFClient
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

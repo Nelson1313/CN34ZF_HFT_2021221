@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace FootballDbApp.WpfClient
+namespace CN34ZF_HFT_2021221.WPFClient
 {
     public class RestService
     {

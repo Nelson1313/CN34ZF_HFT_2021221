@@ -28,7 +28,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{12E7B4
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballDbApp.WpfClient", "FootballDbApp.WpfClient\FootballDbApp.WpfClient.csproj", "{2CF38BE1-AD83-45E5-A358-7E8F02CC275D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CN34ZF_HFT_2021221.WPFClient", "FootballDbApp.WpfClient\CN34ZF_HFT_2021221.WPFClient.csproj", "{2CF38BE1-AD83-45E5-A358-7E8F02CC275D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
