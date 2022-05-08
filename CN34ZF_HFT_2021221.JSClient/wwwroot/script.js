@@ -18,6 +18,10 @@ function setupSignalR() {
         getdata();
     });
 
+    connection.on("TeamUpdated", (user, message) => {
+        getdata();
+    });
+
     connection.onclose(async () => {
         await start();
     });
