@@ -22,11 +22,19 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
-            <Label Content="Name" Background="LightBlue" Padding="10" />
-            <TextBox Text="{Binding SelectedTeam.TeamName}" Padding="10" Margin="0,0,0,30"/>
-            <Button Content="Create Team" Command="{Binding CreateTeamCommand}" Margin="10" Padding="10" />
-            <Button Content="Delete Team" Command="{Binding DeleteTeamCommand}" Margin="10" Padding="10" />
-            <Button Content="Update Team" Command="{Binding UpdateTeamCommand}" Margin="10" Padding="10" />
+            <Label Content="LeagueId" Background="LightBlue" Padding="5" />
+            <TextBox Text="{Binding SelectedTeam.LeagueId}" Padding="5" Margin="0,0,0,5"/>
+            <Label Content="Team Name" Background="LightBlue" Padding="5" />
+            <TextBox Text="{Binding SelectedTeam.TeamName}" Padding="5" Margin="0,0,0,5"/>
+            <Label Content="Seat" Background="LightBlue" Padding="5" />
+            <TextBox Text="{Binding SelectedTeam.Seat}" Padding="5" Margin="0,0,0,5"/>
+            <Label Content="Manager" Background="LightBlue" Padding="5" />
+            <TextBox Text="{Binding SelectedTeam.Manager}" Padding="5" Margin="0,0,0,5"/>
+            <Label Content="Year of Foundation" Background="LightBlue" Padding="5" />
+            <TextBox Text="{Binding SelectedTeam.YearofFoundation}" Padding="5" Margin="0,0,0,5"/>
+            <Button Content="Create Team" Command="{Binding CreateTeamCommand}" Margin="5" Padding="5" />
+            <Button Content="Delete Team" Command="{Binding DeleteTeamCommand}" Margin="5" Padding="5" />
+            <Button Content="Update Team" Command="{Binding UpdateTeamCommand}" Margin="5" Padding="5" />
         </StackPanel>
     </Grid>
 </Window>

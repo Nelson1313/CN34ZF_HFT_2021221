@@ -24,9 +24,14 @@ namespace CN34ZF_HFT_2021221.WPFClient
             set
             {
                 selectedTeam = new Team()
-                {
+                { 
+                    League = value.League,
+                    LeagueId = value.LeagueId,
                     TeamName = value.TeamName,
-                    TeamId = value.TeamId
+                    TeamId = value.TeamId,
+                    Manager = value.Manager,
+                    Seat = value.Seat,
+                    YearofFoundation = value.YearofFoundation
                 };
                 OnPropertyChanged();
                 (DeleteTeamCommand as RelayCommand).NotifyCanExecuteChanged();
@@ -39,7 +44,7 @@ namespace CN34ZF_HFT_2021221.WPFClient
 
         public MainWindowViewModel()
         {
-            Teams = new RestCollection<Team>("http://localhost:56403/", "teams", "hub");
+            Teams = new RestCollection<Team>("http://localhost:56403/", "team", "hub");
             CreateTeamCommand = new RelayCommand(() =>
             {
                 Teams.Add(new Team()

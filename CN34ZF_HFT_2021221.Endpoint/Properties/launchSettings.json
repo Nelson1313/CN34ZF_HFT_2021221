@@ -11,7 +11,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "teams",
+      "launchUrl": "team",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
