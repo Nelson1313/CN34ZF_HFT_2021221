@@ -116,6 +116,7 @@ function create() {
     let stadium = document.getElementById('seat').value;
     let edzo = document.getElementById('manager').value;
     let alapitas = document.getElementById('yearofFoundation').value;
+    let ligaaz = document.getElementById('leagueid').value;
     fetch('http://localhost:56403/team', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
@@ -124,7 +125,8 @@ function create() {
                 teamName: name,
                 seat: stadium,
                 manager: edzo,
-                yearofFoundation: alapitas
+                yearofFoundation: alapitas,
+                leagueId: ligaaz
             }),
     })
         .then(response => response)
