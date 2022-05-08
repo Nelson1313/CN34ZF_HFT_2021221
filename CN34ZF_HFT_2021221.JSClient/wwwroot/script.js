@@ -44,15 +44,14 @@ async function getdata() {
         });
 }
 
-
-
 function display() {
     document.getElementById('resultarea').innerHTML = "";
-    teams.forEach(t => {
+    actors.forEach(t => {
         document.getElementById('resultarea').innerHTML +=
             "<tr><td>" + t.teamId + "</td><td>"
-            + t.teamName + "</td><td>" + t.seat + "</td><td>" + t.manager + "</td><td>" + t.yearofFoundation + "</td><td>" +
-            '<button type="button" onclick="remove(${t.teamId})">Delete</td>' + "</td></tr>";
+        + t.teamName + "</td><td>" + t.seat + "</td><td>" + t.manager + "</td><td>" + t.yearofFoundation + "</td><td>" +
+        `<button type="button" onclick="remove(${t.teamId})">Delete</button>`
+            + "</td></tr>";
     });
 }
 
@@ -60,13 +59,15 @@ function remove(id) {
     fetch('http://localhost:56403/team/' + id, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json', },
-        body: null })
+        body: null
+    })
         .then(response => response)
         .then(data => {
             console.log('Success:', data);
             getdata();
         })
         .catch((error) => { console.error('Error:', error); });
+
 }
 
 function create() {
@@ -78,7 +79,12 @@ function create() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(
-            { teamname: name, seat: stadium, manager: edzo, yearofFoundation: alapitas }),
+            {
+                teamName: name,
+                seat: stadium,
+                manager: edzo,
+                yearofFoundation: alapitas
+            }),
     })
         .then(response => response)
         .then(data =>

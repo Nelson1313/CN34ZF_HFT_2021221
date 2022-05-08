@@ -118,7 +118,6 @@ namespace CN34ZF_HFT_2021221.Data
             {
                 entity.HasOne(league => league.Country)
                 .WithMany(country => country.Leagues)
-                .HasForeignKey(league => league.CountryId)
                 .OnDelete(DeleteBehavior.Cascade);
             });
 
@@ -126,7 +125,6 @@ namespace CN34ZF_HFT_2021221.Data
             {
                 entity.HasOne(team => team.League)
                 .WithMany(league => league.Teams)
-                .HasForeignKey(league => league.LeagueId)
                 .OnDelete(DeleteBehavior.Cascade);
             });
 

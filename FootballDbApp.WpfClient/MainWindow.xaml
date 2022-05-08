@@ -22,7 +22,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
-            <Label Content="LeagueId" Background="LightBlue" Padding="5" />
+            <Label Content="LeagueID" Background="LightBlue" Padding="5" />
             <TextBox Text="{Binding SelectedTeam.LeagueId}" Padding="5" Margin="0,0,0,5"/>
             <Label Content="Team Name" Background="LightBlue" Padding="5" />
             <TextBox Text="{Binding SelectedTeam.TeamName}" Padding="5" Margin="0,0,0,5"/>

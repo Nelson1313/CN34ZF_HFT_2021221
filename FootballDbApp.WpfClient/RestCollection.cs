@@ -16,7 +16,7 @@ namespace CN34ZF_HFT_2021221.WPFClient
     {
         HttpClient client;
 
-        public RestService(string baseurl, string pingableEndpoint = "teams")
+        public RestService(string baseurl, string pingableEndpoint = "team")
         {
             bool isOk = false;
             do

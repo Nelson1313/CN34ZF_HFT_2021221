@@ -23,18 +23,22 @@ namespace CN34ZF_HFT_2021221.WPFClient
             get { return selectedTeam; }
             set
             {
-                selectedTeam = new Team()
-                { 
-                    League = value.League,
-                    LeagueId = value.LeagueId,
-                    TeamName = value.TeamName,
-                    TeamId = value.TeamId,
-                    Manager = value.Manager,
-                    Seat = value.Seat,
-                    YearofFoundation = value.YearofFoundation
-                };
-                OnPropertyChanged();
-                (DeleteTeamCommand as RelayCommand).NotifyCanExecuteChanged();
+                if (value != null)
+                {
+                    selectedTeam = new Team()
+                    {
+                        TeamId = value.TeamId,
+                        TeamName = value.TeamName,
+                        Manager = value.Manager,
+                        Seat = value.Seat,
+                        YearofFoundation = value.YearofFoundation,
+                        LeagueId = value.LeagueId,
+
+                    };
+                    OnPropertyChanged();
+                    (DeleteTeamCommand as RelayCommand).NotifyCanExecuteChanged();
+                    (UpdateTeamCommand as RelayCommand).NotifyCanExecuteChanged();
+                }
             }
         }
 
@@ -49,7 +53,13 @@ namespace CN34ZF_HFT_2021221.WPFClient
             {
                 Teams.Add(new Team()
                 {
-                    TeamName = SelectedTeam.TeamName
+                    TeamId = SelectedTeam.TeamId,
+                    TeamName = SelectedTeam.TeamName,
+                    Manager = SelectedTeam.Manager,
+                    Seat = SelectedTeam.Seat,
+                    YearofFoundation = SelectedTeam.YearofFoundation,
+                    LeagueId = SelectedTeam.LeagueId
+
                 });
             });
 
