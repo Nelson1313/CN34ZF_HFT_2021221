@@ -6,7 +6,7 @@ setupSignalR();
 
 function setupSignalR() {
     connection = new signalR.HubConnectionBuilder()
-        .withUrl("https://localhost:56403/hub")
+        .withUrl("http://localhost:56403/hub")
         .configureLogging(signalR.LogLevel.Information)
         .build();
 
@@ -22,6 +22,8 @@ function setupSignalR() {
         await start();
     });
     start();
+
+
 }
 
 async function start() {
@@ -46,7 +48,7 @@ async function getdata() {
 
 function display() {
     document.getElementById('resultarea').innerHTML = "";
-    actors.forEach(t => {
+    teams.forEach(t => {
         document.getElementById('resultarea').innerHTML +=
             "<tr><td>" + t.teamId + "</td><td>"
         + t.teamName + "</td><td>" + t.seat + "</td><td>" + t.manager + "</td><td>" + t.yearofFoundation + "</td><td>" +
