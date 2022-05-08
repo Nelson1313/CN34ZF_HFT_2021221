@@ -1,5 +1,8 @@
 ﻿let teams = [];
 let connection = null;
+
+let teamIdToUpdate = -1;
+
 getdata();
 setupSignalR();
 
@@ -79,6 +82,33 @@ function remove(id) {
 function showupdate(id) {
     document.getElementById('teamnametoupdate').value = teams.find(t => t['teamId'] == id)['teamName'];
     document.getElementById('updateformdiv').style.display = 'flex';
+    teamIdToUpdate = id;
+}
+
+function update() {
+    document.getElementById('updateformdiv').style.display = 'none';
+    let name = document.getElementById('teamnametoupdate').value;
+    let stadium = document.getElementById('seattoupdate').value;
+    let edzo = document.getElementById('managertoupdate').value;
+    let alapitas = document.getElementById('yearofFoundationtoupdate').value;
+    fetch('http://localhost:56403/team', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', },
+        body: JSON.stringify(
+            {
+                teamId: teamIdToUpdate,
+                teamName: name,
+                seat: stadium,
+                manager: edzo,
+                yearofFoundation: alapitas
+            }),
+    })
+        .then(response => response)
+        .then(data => {
+            console.log('Success:', data);
+            getdata();
+        })
+        .catch((error) => { console.error('Error:', error); });
 }
 
 function create() {
