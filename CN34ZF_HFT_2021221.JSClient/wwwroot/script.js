@@ -56,7 +56,7 @@ function display() {
         document.getElementById('resultarea').innerHTML +=
             "<tr><td>" + t.teamId + "</td><td>"
         + t.teamName + "</td><td>" + t.seat + "</td><td>" + t.manager + "</td><td>" + t.yearofFoundation + "</td><td>" +
-        `<button type="button" onclick="remove(${t.teamId})">Delete</button>`
+        `<button type="button" onclick="remove(${t.teamId})">Delete</button>` + `<button type="button" onclick="showupdate(${t.teamId})">Update</button>`
             + "</td></tr>";
     });
 }
@@ -74,6 +74,11 @@ function remove(id) {
         })
         .catch((error) => { console.error('Error:', error); });
 
+}
+
+function showupdate(id) {
+    document.getElementById('teamnametoupdate').value = teams.find(t => t['teamId'] == id)['teamName'];
+    document.getElementById('updateformdiv').style.display = 'flex';
 }
 
 function create() {
