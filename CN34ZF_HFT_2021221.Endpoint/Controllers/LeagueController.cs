@@ -12,28 +12,28 @@ namespace CN34ZF_HFT_2021221.Endpoint.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class LeaguesController : ControllerBase
+    public class LeagueController : ControllerBase
     {
 
         ILeagueLogic ll;
 
-        public LeaguesController(ILeagueLogic ll)
+        public LeagueController(ILeagueLogic ll)
         {
             this.ll = ll;
         }
 
         // GET: /leagues
         [HttpGet]
-        public IEnumerable<League> Get()
+        public IEnumerable<League> ReadAll()
         {
-            return ll.ReadAll();
+            return this.ll.ReadAll();
         }
 
         // GET /leagues/5
         [HttpGet("{id}")]
         public League Get(int id)
         {
-            return ll.Read(id);
+            return this.ll.Read(id);
         }
 
         // POST /leagues

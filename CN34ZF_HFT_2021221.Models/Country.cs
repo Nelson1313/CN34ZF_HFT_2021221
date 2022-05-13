@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CN34ZF_HFT_2021221.Models
 {
-    //[Table("Countries")]
+    [Table("Countries")]
     public class Country
     {
         [Key]
@@ -25,7 +25,7 @@ namespace CN34ZF_HFT_2021221.Models
 
 
         [NotMapped]
-        public virtual ICollection<League> Leagues { get; }
+        public virtual ICollection<League> Leagues { get; set; }
 
         public Country()
         {

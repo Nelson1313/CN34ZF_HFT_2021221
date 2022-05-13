@@ -10,28 +10,28 @@ namespace CN34ZF_HFT_2021221.Endpoint.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class CountriesController : ControllerBase
+    public class CountryController : ControllerBase
     {
 
         ICountryLogic cl;
 
-        public CountriesController(ICountryLogic cl)
+        public CountryController(ICountryLogic cl)
         {
             this.cl = cl;
         }
 
         // GET: /countries
         [HttpGet]
-        public IEnumerable<Country> Get()
+        public IEnumerable<Country> ReadAll()
         {
-            return cl.ReadAll();
+            return this.cl.ReadAll();
         }
 
         // GET /countries/5
         [HttpGet("{id}")]
         public Country Get(int id)
         {
-            return cl.Read(id);
+            return this.cl.Read(id);
         }
 
         // POST /countries

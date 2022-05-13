@@ -30,6 +30,6 @@ namespace CN34ZF_HFT_2021221.Models
         public int CountryId { get; set; }
 
         [NotMapped]
-        public virtual ICollection<Team> Teams { get; }
+        public virtual ICollection<Team> Teams { get; set; }
     }
 }
