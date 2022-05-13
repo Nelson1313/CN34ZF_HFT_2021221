@@ -110,13 +110,13 @@ namespace CN34ZF_HFT_2021221.WPFClient
                         Area = SelectedCountry.Area,
                         Language = SelectedCountry.Language,
                         Population = SelectedCountry.Population,
-                        Leagues = SelectedCountry.Leagues,
                     });
-                } else
-                {
-                    Countries.Add(new Country() { CountryName="Enter country name here: "});
                 }
-                    
+                else
+                {
+                    Countries.Add(new Country() { CountryName = "Enter country name here: " });
+                }
+
             });
 
             UpdateCountryCommand = new RelayCommand(() =>
@@ -132,7 +132,7 @@ namespace CN34ZF_HFT_2021221.WPFClient
             {
                 return SelectedCountry != null;
             });
-            
+
 
             //
 
@@ -147,14 +147,13 @@ namespace CN34ZF_HFT_2021221.WPFClient
                         LeagueRanking = SelectedLeague.LeagueRanking,
                         NumberofTeams = SelectedLeague.NumberofTeams,
                         CountryId = SelectedLeague.CountryId,
-                        Teams = SelectedLeague.Teams,
-                        Country = SelectedLeague.Country,
                     });
-                } else
-                {
-                    Leagues.Add(new League() { CountryId=1 ,LeagueName = "Enter league name here: " });
                 }
-                
+                else
+                {
+                    Leagues.Add(new League() { CountryId = 1, LeagueName = "Enter league name here: " });
+                }
+
             });
 
             UpdateLeagueCommand = new RelayCommand(() =>
@@ -170,7 +169,7 @@ namespace CN34ZF_HFT_2021221.WPFClient
             {
                 return SelectedLeague != null;
             });
-            
+
 
             //
 
@@ -186,13 +185,13 @@ namespace CN34ZF_HFT_2021221.WPFClient
                         Seat = SelectedTeam.Seat,
                         YearofFoundation = SelectedTeam.YearofFoundation,
                         LeagueId = SelectedTeam.LeagueId,
-                        League = SelectedTeam.League
                     });
-                } else
+                }
+                else
                 {
-                    Teams.Add(new Team() { LeagueId =1, TeamName = "Enter team name here: " });
-                }    
-                    
+                    Teams.Add(new Team() { LeagueId = 1, TeamName = "Enter team name here: " });
+                }
+
             });
 
             UpdateTeamCommand = new RelayCommand(() =>
